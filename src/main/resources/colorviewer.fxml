@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox prefHeight="200.0" prefWidth="100.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+    <children>
+        <Pane prefHeight="200.0" prefWidth="200.0" fx:id="colorPane"/>
+        <TextField editable="false" fx:id="rgbTextField"/>
+        <TextField editable="false" fx:id="rgbNormalizedTextField"/>
+        <TextField editable="false" fx:id="hexTextField"/>
+        <TextField editable="false" fx:id="hsvTextField"/>
+    </children>
+</VBox>
