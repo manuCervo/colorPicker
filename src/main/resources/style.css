@@ -1,0 +1,118 @@
+* {
+    -fx-text-fill: #ffffff;
+    -fx-font-size: 14;
+}
+
+.scroll-pane > .viewport {
+    -fx-background-color: transparent;
+}
+
+BorderPane, HBox, VBox, ScrollPane, FlowPane, SplitPane {
+    -fx-background-color: #2b2b2b;
+}
+
+
+FlowPane {
+    -fx-padding: 10;
+    -fx-hgap: 5;
+    -fx-vgap: 5;
+}
+
+.mainContainer {
+    -fx-spacing: 15;
+    -fx-padding: 20;
+}
+
+SplitPane {
+    -fx-border-width: 0;
+    -fx-padding: 10;
+}
+
+HBox {
+    -fx-spacing: 15;
+}
+
+.ColorScheme {
+    -fx-spacing: 5;
+}
+
+TextField {
+    -fx-background-color: #1b1b1b;
+    -fx-background-radius: 3;
+}
+
+.ColorViewer {
+
+}
+
+
+.ColorViewer TextField {
+    -fx-background-color: #2b2b2b;
+}
+
+.ColorPane {
+    -fx-min-height: 120;
+    -fx-min-width: 120;
+    -fx-max-height: 120;
+    -fx-max-width: 120;
+    -fx-background-radius: 15;
+    -fx-border-radius: 15;
+    -fx-z-index: -1;
+}
+
+.Controls {
+    -fx-padding: 10 0 10 20;
+    -fx-spacing: 10;
+}
+
+ScrollBar {
+    -fx-background-color: transparent;
+}
+
+ScrollBar .track {
+    -fx-background-color: #323232;
+}
+
+ScrollBar .thumb {
+    -fx-background-color: #5e5e5e;
+}
+
+ScrollBar .thumb:hover {
+    -fx-background-color: #707070;
+}
+
+
+.increment-button:hover,
+.decrement-button:hover {
+    -fx-background-color: transparent;
+    -fx-background-radius: 3;
+}
+
+.split-pane-divider {
+    -fx-background-color: #1b1b1b;
+}
+
+.PickButton {
+    -fx-shape: "M395.744,186.372l-21.921-21.92l18.031-18.031c16.067,0.467,32.284-5.415,44.548-17.678 c23.627-23.626,23.627-61.933,0-85.56c-23.627-23.627-61.934-23.627-85.56,0c-12.264,12.263-18.145,28.48-17.678,44.547 l-18.031,18.031l-20.507-20.506c-3.905-3.905-10.236-3.905-14.142,0l-5.657,5.657c-3.904,3.905-3.904,10.237,0,14.142l20.507,20.506 L125.629,295.266l-18.385,79.196l77.075-20.506l169.706-169.706l21.92,21.92c3.905,3.904,10.237,3.905,14.143,0l5.657-5.657 C399.65,196.609,399.649,190.277,395.744,186.372z M180.007,344.127l-60.813,17.536l15.912-62.438l166.947-166.947l44.901,44.901 L180.007,344.127z";
+    -fx-min-width: 32;
+    -fx-max-width: 32;
+    -fx-min-height: 32;
+    -fx-max-height: 32;
+}
+
+.PickButton:hover{
+    -fx-background-color: #d49139;
+}
+
+.PickButton:focused{
+    -fx-background-color: #d49139;
+
+}
+
+Slider .track{
+    -fx-background-color: #1b1b1b;
+}
+
+Slider .thumb{
+    -fx-background-color: #d49139;
+}

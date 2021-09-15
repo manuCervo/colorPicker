@@ -1,7 +1,5 @@
-import java.lang.IllegalStateException
-import java.util.Collections.max
-import java.util.Collections.min
 import kotlin.math.abs
+import kotlin.math.pow
 
 class Color {
     companion object {
@@ -19,6 +17,12 @@ class Color {
             c.s = s
             c.v = v
             return c
+        }
+
+        fun fromHex(hex:String): Color {
+            return Color().apply {
+                this.hex = hex
+            }
         }
     }
 
@@ -52,7 +56,7 @@ class Color {
     var h: Int
         set(value) {
             hue = value
-            updatefromHSV()
+            updateFromHSV()
 
         }
         get() = hue
@@ -61,7 +65,7 @@ class Color {
     var s: Double
         set(value) {
             saturation = value
-            updatefromHSV()
+            updateFromHSV()
         }
         get() = saturation
 
@@ -69,7 +73,7 @@ class Color {
     var v: Double
         set(value) {
             this.value = value
-            updatefromHSV()
+            updateFromHSV()
         }
         get() = this.value
 
@@ -91,6 +95,30 @@ class Color {
             h = value.first
             s = value.second
             v = value.third
+        }
+
+    val relativeLuminance: Double
+        get() {
+            val (r, g, b) = rgbNormalized.run {
+                Triple(
+                    if (first <= 0.03928) {
+                        first / 12.92
+                    } else {
+                        ((first + 0.055) / 1.055).pow(2.4)
+                    },
+                    if (second <= 0.03928) {
+                        second / 12.92
+                    } else {
+                        ((second + 0.055) / 1.055).pow(2.4)
+                    },
+                    if (third <= 0.03928) {
+                        third / 12.92
+                    } else {
+                        ((third + 0.055) / 1.055).pow(2.4)
+                    }
+                )
+            }
+            return 0.2126 * r + 0.7152 * g + 0.0722 * b
         }
 
     var hex: String
@@ -156,10 +184,10 @@ class Color {
     val monochromatic: Array<Color>
         get() {
             return arrayOf(
-                fromHSV(hue,saturation,wrapValue(value-0.2)),
-                fromHSV(hue,saturation,wrapValue(value-0.4)),
-                fromHSV(hue,saturation,wrapValue(value-0.6)),
-                fromHSV(hue,saturation,wrapValue(value-0.8))
+                fromHSV(hue, saturation, wrapValue(value - 0.2)),
+                fromHSV(hue, saturation, wrapValue(value - 0.4)),
+                fromHSV(hue, saturation, wrapValue(value - 0.6)),
+                fromHSV(hue, saturation, wrapValue(value - 0.8))
             )
         }
 
@@ -262,7 +290,7 @@ class Color {
         this.value = hsv.third
     }
 
-    private fun updatefromHSV() {
+    private fun updateFromHSV() {
         val rgb: Triple<Int, Int, Int> = hsvToRgb(h, s, this.v)
         red = rgb.first
         green = rgb.second
@@ -293,8 +321,7 @@ class Color {
         }
     }
 
-    fun clone():Color
-    {
+    fun clone(): Color {
         return Color().apply {
             this.red = this@Color.red
             this.green = this@Color.green
@@ -304,5 +331,4 @@ class Color {
             this.value = this@Color.value
         }
     }
-
 }
