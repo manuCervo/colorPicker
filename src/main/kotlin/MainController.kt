@@ -1,5 +1,4 @@
 import javafx.application.Platform
-import javafx.beans.value.ObservableValue
 import javafx.fxml.FXMLLoader
 import javafx.scene.control.Button
 import javafx.scene.control.Label
@@ -10,7 +9,6 @@ import javafx.scene.input.MouseEvent
 import javafx.scene.layout.FlowPane
 import javafx.scene.layout.HBox
 import javafx.scene.layout.Pane
-import java.lang.NumberFormatException
 
 class MainController {
     lateinit var redSlider: Slider
@@ -47,16 +45,15 @@ class MainController {
 
     lateinit var colorsContainer: FlowPane
 
-    lateinit var colorList :ColorList
+    lateinit var colorList: ColorList
 
-    private val complementaryColorViewer: ColorViewer =ColorViewer(this::onColorViewerClicked)
+    private val complementaryColorViewer: ColorViewer = ColorViewer(this::onColorViewerClicked)
     private val tetradicColorViewers = ColorViewerArray(3, this::onColorViewerClicked)
     private val triadicColorViewers = ColorViewerArray(2, this::onColorViewerClicked)
     private val splitComplementaryColorViewers = ColorViewerArray(2, this::onColorViewerClicked)
     private val analogousColorViewers = ColorViewerArray(4, this::onColorViewerClicked)
-
-
     private val monochromaticColorViewers = ColorViewerArray(4, this::onColorViewerClicked)
+
     private var ignoreListeners = false
 
     private val mainColor: Color = Color.fromRGB(0, 0, 0)
@@ -66,6 +63,7 @@ class MainController {
         if (!ignoreListeners) {
             r?.run { mainColor.r = r }
             g?.run { mainColor.g = g }
+
             b?.run { mainColor.b = b }
             onColorUpdate(updateRgbSliders = false)
         }
@@ -210,7 +208,7 @@ class MainController {
         updateNormalizedRgbTextField: Boolean = true,
         updateHexTextField: Boolean = true
     ) {
-        colorPane.style = "-fx-background-color: rgb(${mainColor.r},${mainColor.g},${mainColor.b});"
+        colorPane.style = "-fx-background-color: #${mainColor.hex});"
         redLabel.text = "${mainColor.r}"
         greenLabel.text = "${mainColor.g}"
         blueLabel.text = "${mainColor.b}"
@@ -219,12 +217,12 @@ class MainController {
         saturationLabel.text = "${(mainColor.s * 100).toInt()}"
         valueLabel.text = "${(mainColor.v * 100).toInt()}"
 
-        complementaryColorViewer.color = mainColor.complementary
-        tetradicColorViewers.colors = mainColor.tetradic
-        triadicColorViewers.colors = mainColor.triadic
-        analogousColorViewers.colors = mainColor.analogous
-        monochromaticColorViewers.colors = mainColor.monochromatic
-        splitComplementaryColorViewers.colors = mainColor.splitComplementary
+        complementaryColorViewer.color = complementary(mainColor)
+        tetradicColorViewers.colors = tetradic(mainColor)
+        triadicColorViewers.colors = triadic(mainColor)
+        analogousColorViewers.colors = analogous(mainColor)
+        monochromaticColorViewers.colors = monochromatic(mainColor)
+        splitComplementaryColorViewers.colors = splitComplementary(mainColor)
 
         ignoreListeners = true
         if (updateRgbSliders) {

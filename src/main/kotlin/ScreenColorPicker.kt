@@ -1,10 +1,8 @@
 import org.jnativehook.GlobalScreen
 import org.jnativehook.mouse.NativeMouseEvent
 import org.jnativehook.mouse.NativeMouseInputListener
-import java.awt.AWTEvent
 import java.awt.MouseInfo
 import java.awt.Robot
-import java.awt.Toolkit
 import java.util.logging.Level
 import java.util.logging.Logger
 

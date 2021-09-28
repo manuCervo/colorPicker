@@ -100,19 +100,19 @@ ScrollBar .thumb:hover {
     -fx-max-height: 32;
 }
 
-.PickButton:hover{
+.PickButton:hover {
     -fx-background-color: #d49139;
 }
 
-.PickButton:focused{
+.PickButton:focused {
     -fx-background-color: #d49139;
 
 }
 
-Slider .track{
+Slider .track {
     -fx-background-color: #1b1b1b;
 }
 
-Slider .thumb{
+Slider .thumb {
     -fx-background-color: #d49139;
 }

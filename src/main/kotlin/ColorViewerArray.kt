@@ -1,4 +1,3 @@
-import javafx.fxml.FXMLLoader
 import javafx.scene.input.MouseEvent
 import javafx.scene.layout.Pane
 
@@ -16,12 +15,9 @@ class ColorViewerArray(size: Int, onColorViewerClicked: (event: MouseEvent?, col
             return colorViewers.map { it.color }.toTypedArray()
         }
 
-
     fun load(parent: Pane) {
         for (c in colorViewers) {
             parent.children.add(c.load())
         }
     }
-
-
 }

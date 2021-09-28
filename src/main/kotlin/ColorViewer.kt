@@ -1,14 +1,10 @@
 import javafx.animation.ScaleTransition
 import javafx.fxml.FXMLLoader
-import javafx.scene.Node
 import javafx.scene.Parent
 import javafx.scene.control.TextField
 import javafx.scene.input.MouseEvent
 import javafx.scene.layout.Pane
-import javafx.scene.layout.VBox
 import javafx.util.Duration
-import kotlin.math.pow
-import kotlin.math.roundToInt
 
 
 class ColorViewer(var onclick: (MouseEvent?, Color) -> Unit = { _, _ -> }) {
@@ -18,11 +14,9 @@ class ColorViewer(var onclick: (MouseEvent?, Color) -> Unit = { _, _ -> }) {
     lateinit var hexTextField: TextField
     lateinit var hsvTextField: TextField
 
-    private val backgroundColor = Color.fromHex("2b2b2b")
-
     fun initialize() {
         colorPane.setOnMouseClicked { onclick(it, color) }
-        colorPane.hoverProperty().addListener { observable, oldValue, newValue ->
+        colorPane.hoverProperty().addListener { _, _, newValue ->
             val transition: ScaleTransition = ScaleTransition(Duration.millis(100.0), colorPane)
             if (newValue) {
                 transition.toX = 1.1
@@ -39,31 +33,24 @@ class ColorViewer(var onclick: (MouseEvent?, Color) -> Unit = { _, _ -> }) {
     var color: Color = Color.fromRGB(0, 0, 0)
         set(value) {
             field = value
-            val rgbString = value.rgb.toString()
-            val rgbNormalizedString =
-                value.rgbNormalized.let {
-                    Triple(
-                        it.first.roundTo(2),
-                        it.second.roundTo(2),
-                        it.third.roundTo(2)
-                    )
-                }.toString()
 
-            val hex = value.hex
-
-            val hsvString = value.hsv.let {
+            colorPane.style = "-fx-background-color:#${value.hex};"
+            rgbTextField.text = value.rgb.toString()
+            rgbNormalizedTextField.text = value.rgbNormalized.let {
+                Triple(
+                    it.first.roundTo(2),
+                    it.second.roundTo(2),
+                    it.third.roundTo(2)
+                )
+            }.toString()
+            hexTextField.text = "#${value.hex}"
+            hsvTextField.text = value.hsv.let {
                 Triple(
                     it.first,
                     it.second.roundTo(2),
                     it.third.roundTo(2)
                 )
             }.toString()
-
-            colorPane.style = "-fx-background-color:rgb$rgbString;"
-            rgbTextField.text = rgbString
-            rgbNormalizedTextField.text = rgbNormalizedString
-            hexTextField.text = "#$hex"
-            hsvTextField.text = hsvString
         }
 
     fun load(): Parent {
