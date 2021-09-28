@@ -208,7 +208,7 @@ class MainController {
         updateNormalizedRgbTextField: Boolean = true,
         updateHexTextField: Boolean = true
     ) {
-        colorPane.style = "-fx-background-color: #${mainColor.hex});"
+        colorPane.style = "-fx-background-color: #${mainColor.hex};"
         redLabel.text = "${mainColor.r}"
         greenLabel.text = "${mainColor.g}"
         blueLabel.text = "${mainColor.b}"

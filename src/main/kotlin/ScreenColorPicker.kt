@@ -57,6 +57,4 @@ class ScreenColorPicker {
         override fun nativeMouseDragged(p0: NativeMouseEvent?) {}
 
     }
-
-
 }
