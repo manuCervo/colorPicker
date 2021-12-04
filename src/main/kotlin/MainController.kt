@@ -74,7 +74,6 @@ class MainController {
         if (!ignoreListeners) {
             r?.run { mainColor.r = r }
             g?.run { mainColor.g = g }
-
             b?.run { mainColor.b = b }
             onColorUpdate(updateRgbSliders = false)
         }
@@ -226,7 +225,7 @@ class MainController {
                 val stage = Stage()
                 val loader = FXMLLoader(javaClass.classLoader.getResource("paletteloader.fxml"))
                 stage.scene = Scene(loader.load())
-                val controller: PaletteLoader = loader.getController()
+                val controller: PaletteLoaderController = loader.getController()
                 controller.onPaletteSelected = { palette ->
                     colorList.clear()
                     for(c in palette.colors)
