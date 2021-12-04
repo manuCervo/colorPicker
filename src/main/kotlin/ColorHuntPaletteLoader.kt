@@ -9,12 +9,12 @@ import kotlin.concurrent.thread
 class ColorHuntPaletteLoader(paletteList: PaletteList) : PaletteLoader(paletteList) {
 
     private var step = 0
-    private val loading:AtomicBoolean = AtomicBoolean(false)
+    private val loading: AtomicBoolean = AtomicBoolean(false)
 
     init {
         paletteList.canDelete = false
         paletteList.scrollPane.vvalueProperty().addListener { observable, oldValue, newValue ->
-            onScroll(oldValue,newValue)
+            onScroll(oldValue, newValue)
         }
     }
 
@@ -68,11 +68,9 @@ class ColorHuntPaletteLoader(paletteList: PaletteList) : PaletteLoader(paletteLi
         return colors
     }
 
-    private fun onScroll(oldValue: Number, newValue: Number){
-        if (newValue.toDouble() == 1.0 && oldValue.toDouble() < newValue.toDouble())
-        {
-            if(loading.compareAndSet(false,true))
-            {
+    private fun onScroll(oldValue: Number, newValue: Number) {
+        if (newValue.toDouble() == 1.0 && oldValue.toDouble() < newValue.toDouble()) {
+            if (loading.compareAndSet(false, true)) {
                 step++
                 scrape()
             }

@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.*?>
+<HBox fx:id="root" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" styleClass="PaletteItem"
+      VBox.vgrow="ALWAYS" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+    <Button mnemonicParsing="false" styleClass="DeleteButton" fx:id="deleteButton"/>
+    <Label fx:id="paletteNameLabel" maxWidth="200.0" minWidth="200.0" text="aaaaaa" BorderPane.alignment="CENTER_LEFT"/>
 
-<HBox fx:id="root" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" styleClass="PaletteItem" VBox.vgrow="ALWAYS" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
-   <Button mnemonicParsing="false" styleClass="DeleteButton" fx:id="deleteButton" />
-    <Label fx:id="paletteNameLabel" maxWidth="200.0" minWidth="200.0" text="aaaaaa" BorderPane.alignment="CENTER_LEFT" />
-
-    <HBox fx:id="colorContainer" alignment="CENTER_LEFT" BorderPane.alignment="CENTER_LEFT" />
+    <HBox fx:id="colorContainer" alignment="CENTER_LEFT" BorderPane.alignment="CENTER_LEFT"/>
 
 </HBox>

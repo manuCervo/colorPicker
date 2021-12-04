@@ -3,10 +3,10 @@ import javafx.scene.layout.Pane
 
 class ColorList(private val container: Pane, private val onColorSelected: (Color) -> Unit) {
     private val colorList = mutableListOf<Color>()
-    val colors:List<Color>
-    get() {
-        return colorList
-    }
+    val colors: List<Color>
+        get() {
+            return colorList
+        }
 
     fun add(color: Color) {
         colorList.add(color)
@@ -26,8 +26,7 @@ class ColorList(private val container: Pane, private val onColorSelected: (Color
         colorViewer.color = color
     }
 
-    fun clear()
-    {
+    fun clear() {
         container.children.clear()
         colorList.clear()
     }

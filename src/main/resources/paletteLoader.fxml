@@ -1,15 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-
-<BorderPane prefHeight="404.0" prefWidth="482.0" styleClass="PaletteLoader" stylesheets="@style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="PaletteLoaderController">
-   <center>
-      <TabPane>
-         <tabs>
-            <Tab fx:id="savedPalettesTab" closable="false" text="saved palettes" />
-            <Tab closable="false" text="colorHunt" fx:id="colorHuntPalettesTab"/>
-         </tabs>
-      </TabPane>
-   </center>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.layout.BorderPane?>
+<BorderPane prefHeight="404.0" prefWidth="482.0" styleClass="PaletteLoader" stylesheets="@style.css"
+            xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="PaletteLoaderController">
+    <center>
+        <TabPane>
+            <tabs>
+                <Tab fx:id="savedPalettesTab" closable="false" text="saved palettes"/>
+                <Tab closable="false" text="colorHunt" fx:id="colorHuntPalettesTab"/>
+            </tabs>
+        </TabPane>
+    </center>
 </BorderPane>

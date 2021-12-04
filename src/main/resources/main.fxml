@@ -2,60 +2,61 @@
 
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-
-<AnchorPane prefHeight="797.0" prefWidth="1117.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="MainController">
-    <BorderPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0" AnchorPane.topAnchor="0">
+<AnchorPane prefHeight="797.0" prefWidth="1117.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/11.0.1"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="MainController">
+    <BorderPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0"
+                AnchorPane.topAnchor="0">
         <left>
             <VBox prefHeight="200.0" prefWidth="100.0" styleClass="Controls" BorderPane.alignment="CENTER">
-                <Pane fx:id="colorPane" prefHeight="200.0" prefWidth="200.0" styleClass="ColorPane" />
+                <Pane fx:id="colorPane" prefHeight="200.0" prefWidth="200.0" styleClass="ColorPane"/>
                 <Label text="RGB">
                 </Label>
                 <GridPane>
-                    <Slider fx:id="redSlider" max="255" GridPane.columnIndex="1" GridPane.rowIndex="0" />
-                    <Slider fx:id="greenSlider" max="255" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                    <Slider fx:id="blueSlider" max="255" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                    <Label fx:id="redLabel" GridPane.columnIndex="0" GridPane.rowIndex="0" />
-                    <Label fx:id="greenLabel" GridPane.columnIndex="0" GridPane.rowIndex="1" />
-                    <Label fx:id="blueLabel" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+                    <Slider fx:id="redSlider" max="255" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+                    <Slider fx:id="greenSlider" max="255" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+                    <Slider fx:id="blueSlider" max="255" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+                    <Label fx:id="redLabel" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+                    <Label fx:id="greenLabel" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+                    <Label fx:id="blueLabel" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
 
                     <columnConstraints>
-                        <ColumnConstraints minWidth="25.0" percentWidth="0.0" />
-                        <ColumnConstraints />
+                        <ColumnConstraints minWidth="25.0" percentWidth="0.0"/>
+                        <ColumnConstraints/>
                     </columnConstraints>
                     <rowConstraints>
-                        <RowConstraints />
-                        <RowConstraints />
-                        <RowConstraints />
+                        <RowConstraints/>
+                        <RowConstraints/>
+                        <RowConstraints/>
                     </rowConstraints>
                 </GridPane>
                 <Label text="HSV">
                 </Label>
                 <GridPane>
-                    <Slider fx:id="hueSlider" max="359" GridPane.columnIndex="1" GridPane.rowIndex="0" />
-                    <Slider fx:id="saturationSlider" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                    <Slider fx:id="valueSlider" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                    <Label fx:id="hueLabel" text="   " GridPane.columnIndex="0" GridPane.rowIndex="0" />
-                    <Label fx:id="saturationLabel" GridPane.columnIndex="0" GridPane.rowIndex="1" />
-                    <Label fx:id="valueLabel" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+                    <Slider fx:id="hueSlider" max="359" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+                    <Slider fx:id="saturationSlider" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+                    <Slider fx:id="valueSlider" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+                    <Label fx:id="hueLabel" text="   " GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+                    <Label fx:id="saturationLabel" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+                    <Label fx:id="valueLabel" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
 
                     <columnConstraints>
-                        <ColumnConstraints minWidth="25.0" percentWidth="0.0" />
-                        <ColumnConstraints />
+                        <ColumnConstraints minWidth="25.0" percentWidth="0.0"/>
+                        <ColumnConstraints/>
                     </columnConstraints>
                     <rowConstraints>
-                        <RowConstraints />
-                        <RowConstraints />
-                        <RowConstraints />
+                        <RowConstraints/>
+                        <RowConstraints/>
+                        <RowConstraints/>
                     </rowConstraints>
                 </GridPane>
                 <VBox spacing="2.0">
-                    <TextField fx:id="rgbTextField" />
-                    <TextField fx:id="normalizedRgbTextField" />
-                    <TextField fx:id="hexTextField" />
-                    <TextField fx:id="hsvTextField" />
+                    <TextField fx:id="rgbTextField"/>
+                    <TextField fx:id="normalizedRgbTextField"/>
+                    <TextField fx:id="hexTextField"/>
+                    <TextField fx:id="hsvTextField"/>
                 </VBox>
 
-                <Button fx:id="pickButton" mnemonicParsing="false" styleClass="PickButton" />
+                <Button fx:id="pickButton" mnemonicParsing="false" styleClass="PickButton"/>
             </VBox>
         </left>
         <center>
@@ -65,52 +66,55 @@
                         <VBox styleClass="mainContainer">
                             <HBox>
                                 <VBox alignment="TOP_CENTER">
-                                    <Label alignment="TOP_LEFT" text="complementary" VBox.vgrow="NEVER" />
-                                    <HBox fx:id="complementaryHBox" styleClass="ColorScheme" VBox.vgrow="ALWAYS" />
+                                    <Label alignment="TOP_LEFT" text="complementary" VBox.vgrow="NEVER"/>
+                                    <HBox fx:id="complementaryHBox" styleClass="ColorScheme" VBox.vgrow="ALWAYS"/>
                                 </VBox>
                                 <VBox alignment="TOP_CENTER">
-                                    <Label alignment="TOP_LEFT" text="tetradic" VBox.vgrow="NEVER" />
-                                    <HBox fx:id="tetradicHBox" styleClass="ColorScheme" VBox.vgrow="ALWAYS" />
+                                    <Label alignment="TOP_LEFT" text="tetradic" VBox.vgrow="NEVER"/>
+                                    <HBox fx:id="tetradicHBox" styleClass="ColorScheme" VBox.vgrow="ALWAYS"/>
                                 </VBox>
                             </HBox>
                             <HBox>
                                 <VBox alignment="TOP_CENTER">
-                                    <Label alignment="TOP_LEFT" text="triadic" VBox.vgrow="NEVER" />
-                                    <HBox fx:id="triadicHBox" styleClass="ColorScheme" VBox.vgrow="ALWAYS" />
+                                    <Label alignment="TOP_LEFT" text="triadic" VBox.vgrow="NEVER"/>
+                                    <HBox fx:id="triadicHBox" styleClass="ColorScheme" VBox.vgrow="ALWAYS"/>
                                 </VBox>
                                 <VBox alignment="TOP_CENTER">
-                                    <Label alignment="TOP_LEFT" text="split complementary" VBox.vgrow="NEVER" />
-                                    <HBox fx:id="splitComplementaryHBox" styleClass="ColorScheme" VBox.vgrow="ALWAYS" />
+                                    <Label alignment="TOP_LEFT" text="split complementary" VBox.vgrow="NEVER"/>
+                                    <HBox fx:id="splitComplementaryHBox" styleClass="ColorScheme" VBox.vgrow="ALWAYS"/>
                                 </VBox>
                             </HBox>
                             <VBox alignment="TOP_CENTER">
-                                <Label alignment="TOP_LEFT" text="analogous" VBox.vgrow="NEVER" />
-                                <HBox fx:id="analogousHBox" alignment="TOP_CENTER" styleClass="ColorScheme" VBox.vgrow="ALWAYS" />
+                                <Label alignment="TOP_LEFT" text="analogous" VBox.vgrow="NEVER"/>
+                                <HBox fx:id="analogousHBox" alignment="TOP_CENTER" styleClass="ColorScheme"
+                                      VBox.vgrow="ALWAYS"/>
                             </VBox>
                             <VBox alignment="TOP_CENTER">
-                                <Label alignment="TOP_LEFT" text="monochromatic" VBox.vgrow="NEVER" />
-                                <HBox fx:id="monochromaticHBox" alignment="TOP_CENTER" styleClass="ColorScheme" VBox.vgrow="ALWAYS" />
+                                <Label alignment="TOP_LEFT" text="monochromatic" VBox.vgrow="NEVER"/>
+                                <HBox fx:id="monochromaticHBox" alignment="TOP_CENTER" styleClass="ColorScheme"
+                                      VBox.vgrow="ALWAYS"/>
                             </VBox>
                         </VBox>
                     </content>
                 </ScrollPane>
                 <BorderPane>
-               <center>
-                      <ScrollPane fitToWidth="true" BorderPane.alignment="CENTER">
-                          <FlowPane fx:id="colorsContainer" BorderPane.alignment="CENTER">
-                    </FlowPane>
-                      </ScrollPane>
-               </center>
-               <top>
-                  <HBox styleClass="PaletteMenu" BorderPane.alignment="CENTER">
-                     <children>
-                        <TextField fx:id="paletteNameTextField" text="new palette" />
-                        <Button fx:id="savePaletteButton" mnemonicParsing="false" text="save" />
-                        <Button fx:id="loadPaletteButton" mnemonicParsing="false" text="load" />
-                        <Button fx:id="clearPaletteButton" mnemonicParsing="false" text="clear" />
-                     </children>
-                  </HBox>
-               </top></BorderPane>
+                    <center>
+                        <ScrollPane fitToWidth="true" BorderPane.alignment="CENTER">
+                            <FlowPane fx:id="colorsContainer" BorderPane.alignment="CENTER">
+                            </FlowPane>
+                        </ScrollPane>
+                    </center>
+                    <top>
+                        <HBox styleClass="PaletteMenu" BorderPane.alignment="CENTER">
+                            <children>
+                                <TextField fx:id="paletteNameTextField" text="new palette"/>
+                                <Button fx:id="savePaletteButton" mnemonicParsing="false" text="save"/>
+                                <Button fx:id="loadPaletteButton" mnemonicParsing="false" text="load"/>
+                                <Button fx:id="clearPaletteButton" mnemonicParsing="false" text="clear"/>
+                            </children>
+                        </HBox>
+                    </top>
+                </BorderPane>
             </SplitPane>
         </center>
     </BorderPane>

@@ -1,7 +1,5 @@
-import javafx.beans.value.ChangeListener
 import javafx.fxml.FXMLLoader
 import javafx.scene.Parent
-import javafx.scene.control.Control
 import javafx.scene.control.ScrollPane
 import javafx.scene.control.TextField
 import javafx.scene.layout.VBox
@@ -13,10 +11,10 @@ class PaletteList {
     lateinit var scrollPane: ScrollPane
     lateinit var searchTextField: TextField
     private val items = mutableListOf<PaletteItem>()
-    private val searchWords:List<String>
-    get() {
-        return searchTextField.text.split(Pattern.compile(" +")).filter { it.isNotEmpty() }
-    }
+    private val searchWords: List<String>
+        get() {
+            return searchTextField.text.split(Pattern.compile(" +")).filter { it.isNotEmpty() }
+        }
 
 
     var canDelete: Boolean = true
@@ -74,8 +72,7 @@ class PaletteList {
 
     var onPaletteSelected: (p: Palette) -> Unit = {}
 
-    private fun testSearch(name:String):Boolean
-    {
+    private fun testSearch(name: String): Boolean {
         return searchWords.isEmpty() || searchWords.all {
             name.contains(it, true)
         }

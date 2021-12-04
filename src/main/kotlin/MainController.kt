@@ -228,8 +228,7 @@ class MainController {
                 val controller: PaletteLoaderController = loader.getController()
                 controller.onPaletteSelected = { palette ->
                     colorList.clear()
-                    for(c in palette.colors)
-                    {
+                    for (c in palette.colors) {
                         colorList.add(c)
 
                     }

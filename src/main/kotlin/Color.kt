@@ -1,4 +1,4 @@
-class Color private constructor():Comparable<Color> {
+class Color private constructor() : Comparable<Color> {
     companion object {
         fun fromRGB(r: Int, g: Int, b: Int): Color {
             return Color().apply {
@@ -156,7 +156,7 @@ class Color private constructor():Comparable<Color> {
             s != other.s -> {
                 other.s.compareTo(s)
             }
-            v !=other.v -> {
+            v != other.v -> {
                 other.v.compareTo(v)
             }
             else -> 0

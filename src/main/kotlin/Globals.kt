@@ -1,13 +1,13 @@
 import java.nio.file.Paths
 
 object Globals {
-    val userDir:String
+    val userDir: String
         get() {
             return System.getProperty("user.home")
         }
 
-    val palettesDir:String
+    val palettesDir: String
         get() {
-            return Paths.get(userDir,".colorPalettes").toString()
+            return Paths.get(userDir, ".colorPalettes").toString()
         }
 }
