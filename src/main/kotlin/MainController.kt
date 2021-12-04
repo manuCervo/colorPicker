@@ -1,5 +1,6 @@
 import javafx.application.Platform
 import javafx.fxml.FXMLLoader
+import javafx.scene.Scene
 import javafx.scene.control.Button
 import javafx.scene.control.Label
 import javafx.scene.control.Slider
@@ -9,6 +10,10 @@ import javafx.scene.input.MouseEvent
 import javafx.scene.layout.FlowPane
 import javafx.scene.layout.HBox
 import javafx.scene.layout.Pane
+import javafx.stage.Modality
+import javafx.stage.Stage
+import java.io.File
+import java.io.FileWriter
 
 class MainController {
     lateinit var redSlider: Slider
@@ -47,6 +52,11 @@ class MainController {
 
     lateinit var colorList: ColorList
 
+    lateinit var savePaletteButton: Button
+    lateinit var paletteNameTextField: TextField
+    lateinit var clearPaletteButton: Button
+    lateinit var loadPaletteButton: Button
+
     private val complementaryColorViewer: ColorViewer = ColorViewer(this::onColorViewerClicked)
     private val tetradicColorViewers = ColorViewerArray(3, this::onColorViewerClicked)
     private val triadicColorViewers = ColorViewerArray(2, this::onColorViewerClicked)
@@ -59,6 +69,7 @@ class MainController {
     private val mainColor: Color = Color.fromRGB(0, 0, 0)
 
     private val screenColorPicker: ScreenColorPicker = ScreenColorPicker()
+
     private fun onRgbSliderUpdate(r: Int? = null, g: Int? = null, b: Int? = null) {
         if (!ignoreListeners) {
             r?.run { mainColor.r = r }
@@ -197,6 +208,41 @@ class MainController {
             onColorUpdate()
         }
         onColorUpdate()
+
+        savePaletteButton.setOnMouseClicked {
+            if (it.button == MouseButton.PRIMARY) {
+                savePalette(paletteNameTextField.text)
+            }
+        }
+
+        clearPaletteButton.setOnMouseClicked {
+            if (it.button == MouseButton.PRIMARY) {
+                colorList.clear()
+            }
+        }
+
+        loadPaletteButton.setOnMouseClicked {
+            if (it.button == MouseButton.PRIMARY) {
+                val stage = Stage()
+                val loader = FXMLLoader(javaClass.classLoader.getResource("paletteloader.fxml"))
+                stage.scene = Scene(loader.load())
+                val controller: PaletteLoader = loader.getController()
+                controller.onPaletteSelected = { palette ->
+                    colorList.clear()
+                    for(c in palette.colors)
+                    {
+                        colorList.add(c)
+
+                    }
+                    paletteNameTextField.text = palette.name
+                    stage.close()
+                }
+                stage.initOwner(loadPaletteButton.scene.window)
+                stage.initModality(Modality.APPLICATION_MODAL)
+                stage.isResizable = false
+                stage.show()
+            }
+        }
     }
 
 
@@ -304,5 +350,19 @@ class MainController {
                     it[2].toDouble()
                 )
             }
+    }
+
+    private fun savePalette(name: String) {
+        val directory: File = File(Globals.palettesDir)
+        if (!directory.exists()) {
+            directory.mkdirs()
+        }
+        val file = File(directory, name)
+        val colors = colorList.colors
+        val writer: FileWriter = FileWriter(file)
+        for (c in colors) {
+            writer.write("${c.hex}\n")
+        }
+        writer.close()
     }
 }
