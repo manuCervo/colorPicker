@@ -4,7 +4,10 @@ import java.io.FileReader
 
 class PaletteLoader {
     lateinit var savedPalettesTab: Tab
-    private val paletteList: PaletteList = PaletteList()
+    lateinit var colorHuntPalettesTab: Tab
+
+    private val userPaletteList: PaletteList = PaletteList()
+    private val colorHuntPaletteList = PaletteList()
 
     fun initialize() {
         val directory: File = File(Globals.palettesDir)
@@ -26,9 +29,13 @@ class PaletteLoader {
                 palettes.add(Palette(paletteName, colors))
             }
         }
-        savedPalettesTab.content = paletteList.load()
-        paletteList.palettes = palettes
-        paletteList.onPaletteSelected = { onPaletteSelected(it) }
+        savedPalettesTab.content = userPaletteList.load()
+        userPaletteList.palettes = palettes
+        userPaletteList.onPaletteSelected = { onPaletteSelected(it) }
+
+        colorHuntPalettesTab.content = colorHuntPaletteList.load()
+        colorHuntPaletteList.palettes = ColorHuntScraper().scrape().toMutableList()
+        colorHuntPaletteList.onPaletteSelected = { onPaletteSelected(it) }
     }
 
     var onPaletteSelected: (palette: Palette) -> Unit = {}

@@ -8,7 +8,7 @@
       <TabPane>
          <tabs>
             <Tab fx:id="savedPalettesTab" closable="false" text="saved palettes" />
-            <Tab closable="false" text="colorhunt" />
+            <Tab closable="false" text="colorHunt" fx:id="colorHuntPalettesTab"/>
          </tabs>
       </TabPane>
    </center>
