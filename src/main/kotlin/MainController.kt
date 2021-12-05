@@ -223,7 +223,7 @@ class MainController {
         loadPaletteButton.setOnMouseClicked {
             if (it.button == MouseButton.PRIMARY) {
                 val stage = Stage()
-                val loader = FXMLLoader(javaClass.classLoader.getResource("paletteloader.fxml"))
+                val loader = FXMLLoader(javaClass.classLoader.getResource("paletteLoader.fxml"))
                 stage.scene = Scene(loader.load())
                 val controller: PaletteLoaderController = loader.getController()
                 controller.onPaletteSelected = { palette ->
